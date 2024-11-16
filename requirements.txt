@@ -4,3 +4,4 @@ numpy
 Pillow==11.0.0
 tensorflow==2.18.0
 whitenoise
+waitress
