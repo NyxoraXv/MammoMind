@@ -1,3 +1,7 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
+
 name: Build and deploy Python app to Azure Web App - mammomind
 
 on:
@@ -24,30 +28,32 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies 1
-        run: pip install waitress
+        run: pip install waitress      
 
       - name: Install dependencies 2
-        run: pip install Django
+        run: pip install Django 
 
       - name: Install dependencies 3
-        run: pip install joblib
+        run: pip install joblib 
 
       - name: Install dependencies 4
-        run: pip install numpy
+        run: pip install numpy 
 
       - name: Install dependencies 5
-        run: pip install Pillow
+        run: pip install Pillow 
 
       - name: Install dependencies 6
-        run: pip install tensorflow
+        run: pip install tensorflow 
 
       - name: Install dependencies 7
-        run: pip install whitenoise
-
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+        run: pip install whitenoise 
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
+
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      - name: Wait before deployment
+        run: sleep 30  # Wait for 30 seconds to avoid SCM conflicts
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
@@ -64,7 +70,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write  # This is required for requesting the JWT
+      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -75,10 +81,7 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      # Adding a small delay before deploying to avoid conflicts with SCM restart
-      - name: Wait before deployment
-        run: sleep 30  # Wait for 30 seconds to avoid SCM conflicts
-
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -92,3 +95,4 @@ jobs:
         with:
           app-name: 'mammomind'
           slot-name: 'Production'
+          
