@@ -27,26 +27,7 @@ jobs:
           python -m venv venv
           source venv/bin/activate
 
-      - name: Install dependencies 1
-        run: pip install waitress      
 
-      - name: Install dependencies 2
-        run: pip install Django 
-
-      - name: Install dependencies 3
-        run: pip install joblib 
-
-      - name: Install dependencies 4
-        run: pip install numpy 
-
-      - name: Install dependencies 5
-        run: pip install Pillow 
-
-      - name: Install dependencies 6
-        run: pip install tensorflow 
-
-      - name: Install dependencies 7
-        run: pip install whitenoise 
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
