@@ -26,27 +26,9 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-
-      - name: Install dependencies 1
-        run: pip install waitress      
-
-      - name: Install dependencies 2
-        run: pip install Django 
-
-      - name: Install dependencies 3
-        run: pip install joblib 
-
-      - name: Install dependencies 4
-        run: pip install numpy 
-
-      - name: Install dependencies 5
-        run: pip install Pillow 
-
-      - name: Install dependencies 6
-        run: pip install tensorflow 
-
-      - name: Install dependencies 7
-        run: pip install whitenoise 
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -83,9 +65,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DE7F05BC01A74D7B8245F9AF9882DF5B }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C65CB7E6E5794334978185767BA3FA18 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D0061EF4CE00485882FB086C158493B6 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2293722C642349C294F89110B391D237 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9B0D69705870400FA9A3EE2D629F9592 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C801095EF78E4E21830EB0FA6A0E8458 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
