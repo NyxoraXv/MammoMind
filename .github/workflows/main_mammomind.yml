@@ -26,11 +26,8 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
 
-      - name: Install dependencies part 2
+      - name: Install dependencies
         run: pip install waitress Django joblib numpy Pillow tensorflow whitenoise
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
@@ -50,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
